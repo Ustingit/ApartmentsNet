@@ -1,15 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using Apartments.Models;
 using System.Web.Mvc;
 
 namespace Apartments.Controllers
 {
     public class HomeController : Controller
     {
+        ApartmentsContext db = new ApartmentsContext();
+
         public ActionResult Index()
         {
+            var qwe = db.Clients.Find(1);
+            ViewBag.QWE = qwe;
             return View();
         }
 

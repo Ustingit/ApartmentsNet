@@ -10,10 +10,10 @@ namespace Apartments.Models
         public string Name { get; set; }
         public string Author { get; set; }
         public string Price { get; set; }
-        public int? Phone { get; set; }
+        public int Phone { get; set; }
         public int? ClientId { get; set; }
         public string Description { get; set; }
-        public HttpPostedFileBase PhoneImg { get; set; }
+        public byte[] PhoneImg { get; set; }
         public byte[] MainApPhoto { get; set; }
         public DateTime DateCreated { get; set; }
         public DateTime DateActualTo { get; set; }
