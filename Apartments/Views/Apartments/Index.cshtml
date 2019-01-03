@@ -42,22 +42,11 @@
         <th>
             @Html.DisplayNameFor(model => model.DateActualTo)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IsActive)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IsDonated)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DonateDueDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.InternalComment)
-        </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+@foreach (var item in Model)
+{
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Name)
@@ -75,7 +64,10 @@
             @Html.DisplayFor(modelItem => item.ClientId)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Description)
+            @{ 
+                string text = (item.Description.Length > 15) ? item.Description.Substring(0, 15) : item.Description;
+            }
+            @Html.DisplayFor(modelItem => text)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.PhoneImg)
@@ -88,18 +80,6 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.DateActualTo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IsActive)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IsDonated)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DonateDueDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.InternalComment)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |

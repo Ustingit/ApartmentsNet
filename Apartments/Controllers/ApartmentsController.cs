@@ -18,7 +18,7 @@ namespace Apartments.Controllers
         // GET: Apartments
         public async Task<ActionResult> Index()
         {
-            return View(await db.Apartments.ToListAsync());
+            return View(await db.Apartments.Where(x=>x.IsActive == true).OrderByDescending(x => x.Id).Take(10).ToListAsync());
         }
 
         // GET: Apartments/Details/5
