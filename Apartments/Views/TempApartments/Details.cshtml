@@ -1,0 +1,163 @@
+﻿@model Apartments.Models.TempApartment
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>TempApartment</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Author)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Author)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Phone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Phone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateCreated)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateCreated)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateActualTo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateActualTo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsActive)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsDonated)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsDonated)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DonateDueDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DonateDueDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InternalComment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InternalComment)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ClientId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClientId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ParsingSource)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ParsingSource)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShortId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShortId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SourceURL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SourceURL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.mainPhotoUrl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mainPhotoUrl)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.photosListUrls)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.photosListUrls)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.phoneImgURL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.phoneImgURL)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

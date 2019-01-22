@@ -150,13 +150,17 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ApartmentsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\TempApartmentsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Apartment.cs" />
     <Compile Include="Models\ApartmentsContext.cs" />
     <Compile Include="Models\ApartmentsDbInitializer.cs" />
+    <Compile Include="Models\ApartmentsTemporaryContext.cs" />
     <Compile Include="Models\Client.cs" />
+    <Compile Include="Models\TempApartment.cs" />
+    <Compile Include="Models\TempClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -205,6 +209,11 @@
     <Content Include="Views\Apartments\Details.cshtml" />
     <Content Include="Views\Apartments\Edit.cshtml" />
     <Content Include="Views\Apartments\Index.cshtml" />
+    <Content Include="Views\TempApartments\Create.cshtml" />
+    <Content Include="Views\TempApartments\Delete.cshtml" />
+    <Content Include="Views\TempApartments\Details.cshtml" />
+    <Content Include="Views\TempApartments\Edit.cshtml" />
+    <Content Include="Views\TempApartments\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
