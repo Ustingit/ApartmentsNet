@@ -8,6 +8,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Apartments.Models;
+using Apartments.Models.Pagination;
 
 namespace Apartments.Controllers
 {
@@ -16,9 +17,24 @@ namespace Apartments.Controllers
         private ApartmentsTemporaryContext db = new ApartmentsTemporaryContext();
 
         // GET: TempApartments
-        public async Task<ActionResult> Index()
+        public async Task<ActionResult> Index(int page = 1, int pageSize=6)
         {
-            return View(await db.Apartments.Where(x => x.IsActive == true).OrderByDescending(x => x.Id).Take(20).ToListAsync());
+            IEnumerable<TempApartment> apartments = db.Apartments
+                .Where(x => x.IsActive == true)
+                .OrderByDescending(x => x.Id)
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize);
+            PaginationModel pageInfo = new PaginationModel
+            {
+                PageNumber = page, PageSize = pageSize,
+                TotalItems = apartments.Count()
+            };
+            ApartmentsWithPagination apartmentsWithPagination = new ApartmentsWithPagination
+            {
+                PageInfo = pageInfo,
+                Apartments = apartments
+            };
+            return View(apartmentsWithPagination);
         }
 
         // GET: TempApartments/Details/5

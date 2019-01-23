@@ -154,11 +154,14 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\PagingHelpers.cs" />
     <Compile Include="Models\Apartment.cs" />
     <Compile Include="Models\ApartmentsContext.cs" />
     <Compile Include="Models\ApartmentsDbInitializer.cs" />
     <Compile Include="Models\ApartmentsTemporaryContext.cs" />
+    <Compile Include="Models\ApartmentsWithPagination.cs" />
     <Compile Include="Models\Client.cs" />
+    <Compile Include="Models\Pagination\PaginationModel.cs" />
     <Compile Include="Models\TempApartment.cs" />
     <Compile Include="Models\TempClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -215,7 +218,9 @@
     <Content Include="Views\TempApartments\Edit.cshtml" />
     <Content Include="Views\TempApartments\Index.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Constants\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
   </ItemGroup>

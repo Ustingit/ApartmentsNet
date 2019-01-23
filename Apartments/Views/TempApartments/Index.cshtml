@@ -1,4 +1,5 @@
-﻿@model IEnumerable<Apartments.Models.TempApartment>
+﻿@model Apartments.Models.ApartmentsWithPagination
+@using Apartments.Helpers
 
 @{
     ViewBag.Title = "Index";
@@ -13,124 +14,132 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+            @Html.DisplayNameFor(m => m.Apartments.FirstOrDefault().Name)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Author)
+            @Html.DisplayNameFor(m => m.Apartments.FirstOrDefault().Author)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Price)
+            @Html.DisplayNameFor(m => m.Apartments.FirstOrDefault().Price)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Phone)
+            @Html.DisplayNameFor(m => m.Apartments.FirstOrDefault().Phone)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Description)
+            @Html.DisplayNameFor(m => m.Apartments.FirstOrDefault().Description)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DateCreated)
+            @Html.DisplayNameFor(m => m.Apartments.FirstOrDefault().DateCreated)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DateActualTo)
+            @Html.DisplayNameFor(m => m.Apartments.FirstOrDefault().DateActualTo)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.IsActive)
+            @Html.DisplayNameFor(m => m.Apartments.FirstOrDefault().IsActive)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.IsDonated)
+            @Html.DisplayNameFor(m => m.Apartments.FirstOrDefault().IsDonated)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DonateDueDate)
+            @Html.DisplayNameFor(m => m.Apartments.FirstOrDefault().DonateDueDate)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.InternalComment)
+            @Html.DisplayNameFor(m => m.Apartments.FirstOrDefault().InternalComment)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ClientId)
+            @Html.DisplayNameFor(m => m.Apartments.FirstOrDefault().ClientId)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ParsingSource)
+            @Html.DisplayNameFor(m => m.Apartments.FirstOrDefault().ParsingSource)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ShortId)
+            @Html.DisplayNameFor(m => m.Apartments.FirstOrDefault().ShortId)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.SourceURL)
+            @Html.DisplayNameFor(m => m.Apartments.FirstOrDefault().SourceURL)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.mainPhotoUrl)
+            @Html.DisplayNameFor(m => m.Apartments.FirstOrDefault().mainPhotoUrl)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.photosListUrls)
+            @Html.DisplayNameFor(m => m.Apartments.FirstOrDefault().photosListUrls)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.phoneImgURL)
+            @Html.DisplayNameFor(m => m.Apartments.FirstOrDefault().phoneImgURL)
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Author)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Price)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Phone)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateCreated)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateActualTo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IsActive)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IsDonated)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DonateDueDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.InternalComment)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ClientId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ParsingSource)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ShortId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SourceURL)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.mainPhotoUrl)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.photosListUrls)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.phoneImgURL)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model.Apartments)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Author)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateCreated)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateActualTo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsActive)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsDonated)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DonateDueDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InternalComment)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClientId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ParsingSource)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShortId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SourceURL)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.mainPhotoUrl)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.photosListUrls)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.phoneImgURL)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
 
 </table>
+
+
+
+<br />
+<div class="btn-group">
+    @Html.PageLinks(Model.PageInfo, x => Url.Action("Index", new { page = x }))
+</div>
