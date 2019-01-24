@@ -17,17 +17,16 @@ namespace Apartments.Controllers
         private ApartmentsTemporaryContext db = new ApartmentsTemporaryContext();
 
         // GET: TempApartments
-        public async Task<ActionResult> Index(int page = 1, int pageSize=6)
+        public async Task<ActionResult> Index(int page = 1, int pageSize=10)
         {
-            IEnumerable<TempApartment> apartments = db.Apartments
+            var allApartments = db.Apartments
                 .Where(x => x.IsActive == true)
-                .OrderByDescending(x => x.Id)
-                .Skip((page - 1) * pageSize)
-                .Take(pageSize);
+                .OrderByDescending(x => x.Id);
+            IEnumerable<TempApartment> apartments = allApartments.Skip((page - 1) * pageSize).Take(pageSize);
             PaginationModel pageInfo = new PaginationModel
             {
                 PageNumber = page, PageSize = pageSize,
-                TotalItems = apartments.Count()
+                TotalItems = allApartments.Count()
             };
             ApartmentsWithPagination apartmentsWithPagination = new ApartmentsWithPagination
             {
