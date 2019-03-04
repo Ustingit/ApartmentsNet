@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Kvartirnik. Беларусь</title>
+    @Styles.Render("~/Content/Site.css")
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
@@ -32,6 +33,12 @@
         <hr />
         <footer>
             <p>&copy; Kvartirnik @DateTime.Now.Year - Беларусь. По всем вопросам ustinx@mail.ru</p>
+
+            <!-- https://tech.yandex.ru/share/  -->
+            <script src="//yastatic.net/es5-shims/0.0.2/es5-shims.min.js" async="async"></script>
+            <script src="//yastatic.net/share2/share.js" async="async"></script>
+            <div class="ya-share2" data-services="vkontakte,facebook,odnoklassniki,linkedin,viber,skype" data-counter=""></div>
+            <div class="ya-share2" data-services="telegram" data-counter="" data-url="#"></div>
         </footer>
     </div>
 
