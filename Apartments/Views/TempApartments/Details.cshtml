@@ -1,4 +1,5 @@
 ﻿@model Apartments.Models.TempApartment
+@using Apartments.Helpers
 
 @{
     ViewBag.Title = "Details";
@@ -156,6 +157,15 @@
         </dd>
 
     </dl>
+</div>
+
+<div id="photos">
+    @foreach (var image in Model.mainPhotoUrl.Split(';'))
+    {
+       
+    <img src = "@Url.Content(ImageHelpers.GetImageUrl(Model.ShortId, image))" style="overflow:hidden;position:relative;width:200px;height:200px;" />
+        <br/>
+    }
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
