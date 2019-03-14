@@ -160,10 +160,14 @@
 </div>
 
 <div id="photos">
+    @if (Model.mainPhotoUrl.Split(';').Length > 0)
+    {
+
+    }
     @foreach (var image in Model.mainPhotoUrl.Split(';'))
     {
        
-    <img src = "@Url.Content(ImageHelpers.GetImageUrl(Model.ShortId, image))" style="overflow:hidden;position:relative;width:200px;height:200px;" />
+    <img src = "@Url.Content("~/Images/kvartirant/" + Model.ShortId + "/" + image)" style="overflow:hidden;position:relative;width:200px;height:200px;" />
         <br/>
     }
 </div>
