@@ -163,6 +163,11 @@
     <Compile Include="Models\ApartmentsWithPagination.cs" />
     <Compile Include="Models\Client.cs" />
     <Compile Include="Models\Pagination\PaginationModel.cs" />
+    <Compile Include="Models\Postgres\Adress.cs" />
+    <Compile Include="Models\Postgres\Apartment.cs" />
+    <Compile Include="Models\Postgres\Client.cs" />
+    <Compile Include="Models\Postgres\Company.cs" />
+    <Compile Include="Models\Postgres\Payment.cs" />
     <Compile Include="Models\TempApartment.cs" />
     <Compile Include="Models\TempClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
