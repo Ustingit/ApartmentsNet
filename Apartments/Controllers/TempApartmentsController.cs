@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using Apartments.Models;
-using Apartments.Models.Pagination;
+using PagedList;
 
 namespace Apartments.Controllers
 {
@@ -22,18 +20,9 @@ namespace Apartments.Controllers
             var allApartments = db.Apartments
                 .Where(x => x.IsActive == true)
                 .OrderByDescending(x => x.Id);
-            IEnumerable<TempApartment> apartments = allApartments.Skip((page - 1) * pageSize).Take(pageSize);
-            PaginationModel pageInfo = new PaginationModel
-            {
-                PageNumber = page, PageSize = pageSize,
-                TotalItems = allApartments.Count()
-            };
-            ApartmentsWithPagination apartmentsWithPagination = new ApartmentsWithPagination
-            {
-                PageInfo = pageInfo,
-                Apartments = apartments
-            };
-            return View(apartmentsWithPagination);
+            IEnumerable<Models.Postgres.Apartment> apartments = allApartments.Skip((page - 1) * pageSize).Take(pageSize);
+
+            return View(apartments.ToPagedList(page, pageSize));
         }
 
         // GET: TempApartments/Details/5
@@ -43,7 +32,7 @@ namespace Apartments.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TempApartment tempApartment = await db.Apartments.FindAsync(id);
+            Models.Postgres.Apartment tempApartment = await db.Apartments.FindAsync(id);
             if (tempApartment == null)
             {
                 return HttpNotFound();
@@ -62,7 +51,7 @@ namespace Apartments.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,Name,Author,Price,Phone,Description,DateCreated,DateActualTo,IsActive,IsDonated,DonateDueDate,InternalComment,ClientId,ParsingSource,ShortId,SourceURL,mainPhotoUrl,photosListUrls,phoneImgURL")] TempApartment tempApartment)
+        public async Task<ActionResult> Create([Bind(Include = "Id,Name,Author,Price,Phone,Description,DateCreated,DateActualTo,IsActive,IsDonated,DonateDueDate,InternalComment,ClientId,ParsingSource,ShortId,SourceURL,mainPhotoUrl,photosListUrls,phoneImgURL")] Models.Postgres.Apartment tempApartment)
         {
             if (ModelState.IsValid)
             {
@@ -81,7 +70,7 @@ namespace Apartments.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TempApartment tempApartment = await db.Apartments.FindAsync(id);
+            Models.Postgres.Apartment tempApartment = await db.Apartments.FindAsync(id);
             if (tempApartment == null)
             {
                 return HttpNotFound();
@@ -112,7 +101,7 @@ namespace Apartments.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TempApartment tempApartment = await db.Apartments.FindAsync(id);
+            Models.Postgres.Apartment tempApartment = await db.Apartments.FindAsync(id);
             if (tempApartment == null)
             {
                 return HttpNotFound();
@@ -125,7 +114,7 @@ namespace Apartments.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            TempApartment tempApartment = await db.Apartments.FindAsync(id);
+            Models.Postgres.Apartment tempApartment = await db.Apartments.FindAsync(id);
             db.Apartments.Remove(tempApartment);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");

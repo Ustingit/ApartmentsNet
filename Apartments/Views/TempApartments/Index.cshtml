@@ -1,5 +1,8 @@
-﻿@model Apartments.Models.ApartmentsWithPagination
+﻿@using PagedList;
+@model IPagedList<Apartments.Models.Postgres.Apartment>
+@using PagedList.Mvc;
 @using Apartments.Helpers
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
 @{
     ViewBag.Title = "Index";
@@ -7,6 +10,40 @@
 }
 
 <h2>Index</h2>
+
+<table class="table">
+    <tr>
+        <th>Название</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+        </tr>
+    }
+
+</table>
+<br />
+Страница @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) из @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <p>
     @Html.ActionLink("Create New", "Create")
