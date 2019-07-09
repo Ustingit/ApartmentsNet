@@ -16,7 +16,6 @@ namespace Apartments.Models.Postgres
         [Required]
         public DateTime StartDate { get; set; }
         public DateTime FinishDate { get; set; }
-        [Required]
         public bool IsCompleted { get; set; } = false;
         public string Information { get; set; }
         public string Check { get; set; }

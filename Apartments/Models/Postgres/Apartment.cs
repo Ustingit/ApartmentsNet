@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Apartments.Constants.Enums;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
@@ -28,10 +29,9 @@ namespace Apartments.Models.Postgres
         public bool IsDonated { get; set; } = false;
         public DateTime DonateDueDate { get; set; }
         public List<Client> Followers { get; set; }
-
-
+        
         [Display(Name = "Источник объявления")]
-        public int? ParsingSource { get; set; }
+        public ParsingSources? ParsingSource { get; set; }
         public string ShortId { get; set; }
         public string SourceURL { get; set; }
         public string mainPhotoUrl { get; set; }
