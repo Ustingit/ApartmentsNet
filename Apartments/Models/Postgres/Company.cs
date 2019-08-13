@@ -14,7 +14,7 @@ namespace Apartments.Models.Postgres
         [Required]
         public int Phone { get; set; }
         [Required]
-        public Adress Address { get; set; }
+        public string AddressId { get; set; }  //public Adress Address { get; set; }
         public bool IsBelCompany { get; set; }
         public string Comment { get; set; }
         public bool IsVIP { get; set; } = false;

@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 namespace Apartments.Models.Postgres
 {
     [Serializable]
-    public class Payment
+    public class Payment  //done v v2
     {
         [Required]
         public int Id { get; set; }
@@ -12,7 +12,7 @@ namespace Apartments.Models.Postgres
         [Range(typeof(double), "0.00", "1844674407.99")]
         public double Sum { get; set; } = 0;
         [Required]
-        public Client Sender { get; set; }
+        public string SenderId { get; set; }  //public Client Sender { get; set; }
         [Required]
         public DateTime StartDate { get; set; }
         public DateTime FinishDate { get; set; }

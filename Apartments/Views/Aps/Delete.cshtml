@@ -1,0 +1,152 @@
+﻿@model Apartments.Models.Postgres.Apartment
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Apartment</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Phone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Phone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateCreated)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateCreated)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateActualTo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateActualTo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsActive)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsDonated)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsDonated)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DonateDueDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DonateDueDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ParsingSource)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ParsingSource)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShortId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShortId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SourceURL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SourceURL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.mainPhotoUrl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mainPhotoUrl)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.phoneImgURL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.phoneImgURL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Comment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Comment)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Information)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Information)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

@@ -47,10 +47,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="EntityFramework6.Npgsql, Version=3.2.1.1, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework6.Npgsql.3.2.1.1\lib\net45\EntityFramework6.Npgsql.dll</HintPath>
@@ -192,8 +194,11 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Constants\Enums\ParsingSources.cs" />
     <Compile Include="Controllers\ApartmentsController.cs" />
+    <Compile Include="Controllers\ApsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ImagesController.cs" />
     <Compile Include="Controllers\TempApartmentsController.cs" />
+    <Compile Include="Constants\ControllersConstants.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -2627,9 +2632,15 @@
     <Content Include="Views\TempApartments\Details.cshtml" />
     <Content Include="Views\TempApartments\Edit.cshtml" />
     <Content Include="Views\TempApartments\Index.cshtml" />
+    <Content Include="Views\Aps\Create.cshtml" />
+    <Content Include="Views\Aps\Delete.cshtml" />
+    <Content Include="Views\Aps\Details.cshtml" />
+    <Content Include="Views\Aps\Edit.cshtml" />
+    <Content Include="Views\Aps\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Images\kvartirant\old\kv1746020\" />
+    <Folder Include="Views\Images\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
