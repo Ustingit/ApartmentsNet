@@ -15,7 +15,7 @@ namespace Apartments.Models.Postgres
         public string SenderId { get; set; }  //public Client Sender { get; set; }
         [Required]
         public DateTime StartDate { get; set; }
-        public DateTime FinishDate { get; set; }
+        public DateTime? FinishDate { get; set; }
         public bool IsCompleted { get; set; } = false;
         public string Information { get; set; }
         public string Check { get; set; }

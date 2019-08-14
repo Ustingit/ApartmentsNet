@@ -79,7 +79,7 @@ namespace Apartments.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,Name,Price,Phone,Description,DateCreated,DateActualTo,IsActive,IsDonated,DonateDueDate,ParsingSource,ShortId,SourceURL,mainPhotoUrl,phoneImgURL,Comment,Information")] Apartment apartment)
+        public async Task<ActionResult> Edit([Bind(Include = "Id,Name,Price,Phone,Description,DateCreated,DateActualTo,IsActive,IsDonated,DonateDueDate,ParsingSource,ShortId,SourceURL,mainPhotoUrl,phoneImgURL,Comment,Information,AuthorId,AddressId,photosListUrls")] Apartment apartment)
         {
             if (ModelState.IsValid)
             {

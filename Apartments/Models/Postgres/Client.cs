@@ -28,7 +28,7 @@ namespace Apartments.Models.Postgres
         public string InternalComment { get; set; }
         [Required]
         public int Phone { get; set; }
-        public DateTime RegistrationDate { get; set; }
+        public DateTime? RegistrationDate { get; set; }
         [Required]
         public DateTime BirthDate { get; set; }
         public bool IsAgent { get; set; }

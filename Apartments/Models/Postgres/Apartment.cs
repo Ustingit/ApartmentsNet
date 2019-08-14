@@ -1,6 +1,5 @@
 ﻿using Apartments.Constants.Enums;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Apartments.Models.Postgres
@@ -22,12 +21,12 @@ namespace Apartments.Models.Postgres
         [Display(Name = "Описание")]
         public string Description { get; set; }
         [Display(Name = "Дата создания")]
-        public DateTime DateCreated { get; set; }
+        public DateTime? DateCreated { get; set; } = DateTime.Now;
         [Display(Name = "Дата окончания действия")]
-        public DateTime DateActualTo { get; set; }
+        public Nullable<DateTime> DateActualTo { get; set; }
         public bool IsActive { get; set; } = false;
         public bool IsDonated { get; set; } = false;
-        public DateTime DonateDueDate { get; set; }
+        public Nullable<DateTime> DonateDueDate { get; set; }
         public string FollowersIds { get; set; }  //public List<string> FollowersIds { get; set; }   //public List<Client> Followers { get; set; }
         [Required]
         public string AddressId { get; set; }  //public Adress Address { get; set; }
