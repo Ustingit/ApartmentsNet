@@ -21,7 +21,7 @@ namespace Apartments.Controllers
                 .Where(x => x.IsActive == true)
                 .OrderByDescending(x => x.Id);
             IEnumerable<Models.Postgres.Apartment> apartments = allApartments.Skip((page - 1) * pageSize).Take(pageSize);
-
+            var t = apartments.ToPagedList(page, pageSize);
             return View(apartments.ToPagedList(page, pageSize));
         }
 

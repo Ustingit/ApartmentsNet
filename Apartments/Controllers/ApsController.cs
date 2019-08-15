@@ -8,6 +8,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Apartments.Models.Postgres;
+using PagedList;
 
 namespace Apartments.Controllers
 {
@@ -16,9 +17,14 @@ namespace Apartments.Controllers
         private Apartments.Models.ApartmentsTemporaryContext db = new Apartments.Models.ApartmentsTemporaryContext();
 
         // GET: Aps
-        public async Task<ActionResult> Index()
+        public async Task<ActionResult> Index(int page = 1, int pageSize = 10)
         {
-            return View(await db.Apartments.ToListAsync());
+                var allApartments = db.Apartments
+                    .Where(x => x.IsActive == true)
+                    .OrderByDescending(x => x.Id);
+                IEnumerable<Models.Postgres.Apartment> apartments = allApartments.Skip((page - 1) * pageSize).Take(pageSize);
+            var t = apartments.ToPagedList(page, pageSize);
+                return View(apartments.ToPagedList(page, pageSize));
         }
 
         // GET: Aps/Details/5

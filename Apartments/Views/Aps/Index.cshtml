@@ -1,4 +1,8 @@
-﻿@model IEnumerable<Apartments.Models.Postgres.Apartment>
+﻿@using PagedList;
+@model IPagedList<Apartments.Models.Postgres.Apartment>
+@using PagedList.Mvc;
+@using Apartments.Helpers
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
 @{
     ViewBag.Title = "Index";
@@ -10,57 +14,7 @@
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Price)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Phone)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DateCreated)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DateActualTo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IsActive)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IsDonated)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DonateDueDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ParsingSource)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ShortId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SourceURL)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.mainPhotoUrl)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.phoneImgURL)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Comment)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Information)
-        </th>
-        <th></th>
-    </tr>
+    
 
 @foreach (var item in Model) {
     <tr>

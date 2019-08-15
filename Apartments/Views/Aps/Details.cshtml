@@ -111,7 +111,10 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.mainPhotoUrl)
+            <div id="photos">
+                <img src="@Url.Content(Model.mainPhotoUrl)" style="overflow:hidden;position:relative;width:200px;height:200px;" />
+                    <br />
+            </div>
         </dd>
 
         <dt>
