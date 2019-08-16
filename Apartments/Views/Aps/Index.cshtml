@@ -107,65 +107,31 @@
 <br />
 
 
-<!-- Posts section -->
 <div class="blog">
     <div class="container">
         <h1 class="text-center">Blog</h1>
         <div class="row">
-            <div class="col-md-4 col-lg-4 col-sm-12">
-                <div class="card">
-                    <div class="card-img">
-                        <img align="center" src="@Url.Content(Model.FirstOrDefault().phoneImgURL)" class="img-fluid">
-                    </div>
+            @foreach (var item in Model)
+            {
+                <div class="col-md-4 col-lg-4 col-sm-12">
+                    <div class="card">
+                        <div class="card-img">
+                            <img align="center" src="@Url.Content(Model.FirstOrDefault().phoneImgURL)" class="img-fluid">
+                        </div>
 
-                    <div class="card-body">
-                        <h4 class="card-title">Post Title</h4>
-                        <p class="card-text">
+                        <div class="card-body">
+                            <h4 class="card-title">@item.Name @item.Price</h4>
+                            <p class="card-text">
 
-                            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        </p>
-                    </div>
-                    <div class="card-footer">
-                        <a href="" class="card-link">Read more</a>
+                                @item.Description
+                            </p>
+                        </div>
+                        <div class="card-footer">
+                            <a href="" class="card-link">@Html.ActionLink("Details", "Details", new { id = item.Id })</a>  
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-4 col-lg-4 col-sm-12">
-                <div class="card">
-                    <div class="card-img">
-                        <img src="@Url.Content(Model.FirstOrDefault().phoneImgURL)" class="img-fluid" align="center"/>
-                    </div>
-
-                    <div class="card-body">
-                        <h4 class="card-title">Post Title</h4>
-                        <p class="card-text">
-
-                            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        </p>
-                    </div>
-                    <div class="card-footer">
-                        <a href="" class="card-link">Read more</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-lg-4 col-sm-12">
-                <div class="card">
-                    <div class="card-img">
-                        <img align="center" src="@Url.Content(Model.FirstOrDefault().phoneImgURL)" class="img-fluid">
-                    </div>
-
-                    <div class="card-body">
-                        <h4 class="card-title">Post Title</h4>
-                        <p class="card-text">
-
-                            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        </p>
-                    </div>
-                    <div class="card-footer">
-                        <a href="" class="card-link">Read more</a>
-                    </div>
-                </div>
-            </div>
+            }
         </div>
     </div>
 </div>

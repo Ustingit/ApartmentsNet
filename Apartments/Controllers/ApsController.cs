@@ -17,7 +17,7 @@ namespace Apartments.Controllers
         private Apartments.Models.ApartmentsTemporaryContext db = new Apartments.Models.ApartmentsTemporaryContext();
 
         // GET: Aps
-        public async Task<ActionResult> Index(int page = 1, int pageSize = 10)
+        public async Task<ActionResult> Index(int page = 1, int pageSize = 9)
         {
                 var allApartments = db.Apartments
                     .Where(x => x.IsActive == true)
