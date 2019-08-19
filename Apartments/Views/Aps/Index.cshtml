@@ -26,6 +26,16 @@
 .blog .card-body{
  padding: 1em;
 }
+
+.myhidden{
+    visibility: hidden;
+    color:#23ea86;
+}
+
+.myvisible{
+    visibility: visible;
+    color:#ff0000;
+}
 </style>
 
 @{
@@ -37,74 +47,6 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
-    
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Price)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Phone)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateCreated)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateActualTo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IsActive)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IsDonated)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DonateDueDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ParsingSource)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ShortId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SourceURL)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.mainPhotoUrl)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.phoneImgURL)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Comment)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Information)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
-
-</table>
-
-
-<br />
-<br />
-<br />
-<br />
 
 
 <div class="blog">
@@ -122,8 +64,15 @@
                         <div class="card-body">
                             <h4 class="card-title">@item.Name @item.Price</h4>
                             <p class="card-text">
-
-                                @item.Description
+                                @{ 
+                                    string trimmedDesc = item.Description.Trim();
+                                    string desc = trimmedDesc.Length > 150 ? trimmedDesc.Substring(0, 151) : trimmedDesc + new String(' ', 162 - trimmedDesc.Length);
+                                }
+                                @Html.DisplayFor(modelItem => desc)
+                                @if (trimmedDesc.Length > 150)
+                                {
+                                    @Html.ActionLink("..подробнее.", "Details", new { id = item.Id })
+                                }
                             </p>
                         </div>
                         <div class="card-footer">
