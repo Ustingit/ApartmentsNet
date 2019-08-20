@@ -1,6 +1,4 @@
-﻿@using PagedList;
-@model IPagedList<Apartments.Models.Postgres.Apartment>
-@using PagedList.Mvc;
+﻿@model Apartments.Models.Postgres.DomainApartment
 @using Apartments.Helpers
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 <style>
@@ -26,20 +24,10 @@
 .blog .card-body{
  padding: 1em;
 }
-
-.myhidden{
-    visibility: hidden;
-    color:#23ea86;
-}
-
-.myvisible{
-    visibility: visible;
-    color:#ff0000;
-}
 </style>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Квартиры в аренду";
 }
 
 <h2>Index</h2>
@@ -51,14 +39,14 @@
 
 <div class="blog">
     <div class="container">
-        <h1 class="text-center">Blog</h1>
+        <h1 class="text-center">Доступные квартиры</h1>
         <div class="row">
-            @foreach (var item in Model)
+            @foreach (var item in Model.Apartments)
             {
                 <div class="col-md-4 col-lg-4 col-sm-12">
                     <div class="card">
                         <div class="card-img">
-                            <img align="center" src="@Url.Content(Model.FirstOrDefault().phoneImgURL)" class="img-fluid">
+                            <img align="center" src="@Url.Content(Model.Apartments.FirstOrDefault().phoneImgURL)" class="img-fluid">
                         </div>
 
                         <div class="card-body">
@@ -81,6 +69,10 @@
                     </div>
                 </div>
             }
+        </div>
+        <br />
+        <div class="btn-group">
+            @Html.PageLinks(Model.PageInfo, x => Url.Action("Index", new { page = x }))
         </div>
     </div>
 </div>

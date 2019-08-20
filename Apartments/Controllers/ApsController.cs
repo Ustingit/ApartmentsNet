@@ -14,17 +14,24 @@ namespace Apartments.Controllers
 {
     public class ApsController : Controller
     {
-        private Apartments.Models.ApartmentsTemporaryContext db = new Apartments.Models.ApartmentsTemporaryContext();
-
-        // GET: Aps
+        private Models.ApartmentsTemporaryContext db = new Models.ApartmentsTemporaryContext();
+        
         public async Task<ActionResult> Index(int page = 1, int pageSize = 9)
         {
-                var allApartments = db.Apartments
+            var allApartments = db.Apartments
                     .Where(x => x.IsActive == true)
                     .OrderByDescending(x => x.Id);
-                IEnumerable<Models.Postgres.Apartment> apartments = allApartments.Skip((page - 1) * pageSize).Take(pageSize);
-            var t = apartments.ToPagedList(page, pageSize);
-                return View(apartments.ToPagedList(page, pageSize));
+
+            var all = await allApartments.ToListAsync();
+            var temp = await allApartments.Skip((page - 1) * pageSize).Take(pageSize).ToListAsync();
+
+            DomainApartment aps = new DomainApartment
+            {
+                Apartments = temp,
+                PageInfo = new Models.PageInfo { PageNumber = page, PageSize = pageSize, TotalItems = all.Count }
+            };
+
+            return View(aps);
         }
 
         // GET: Aps/Details/5
