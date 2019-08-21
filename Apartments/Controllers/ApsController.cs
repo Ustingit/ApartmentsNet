@@ -129,6 +129,12 @@ namespace Apartments.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpGet]
+        public string GetUUID()
+        {
+            return Guid.NewGuid().ToString();
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
