@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using Apartments.Models.Postgres;
 using PagedList;
+using System.IO;
 
 namespace Apartments.Controllers
 {
@@ -133,6 +134,37 @@ namespace Apartments.Controllers
         public string GetUUID()
         {
             return Guid.NewGuid().ToString();
+        }
+
+        public async Task<ActionResult> Test()
+        {
+            return await Task.Run(() => View("Test"));
+        }
+
+        private static string pathToImages = @"D:\ApartmentsImages";
+
+        [HttpPost]
+        public async Task<ActionResult> Test(HttpPostedFileBase[] files) // full working with https://www.c-sharpcorner.com/article/uploading-multiple-files-in-asp-net-mvc/
+        {
+            string pathes = string.Empty;
+            string guid = Guid.NewGuid().ToString();
+            await Utils.IOUtils.CreateDirectoryIfNotExist(Path.Combine(pathToImages, guid));
+            if (ModelState.IsValid)
+            {
+                foreach (HttpPostedFileBase file in files)
+                {
+                    if (file != null)
+                    {
+                        var InputFileName = Path.GetFileName(file.FileName);
+                        string pathToSave = Path.Combine(pathToImages, guid, InputFileName);
+                        await Task.Run(() => file.SaveAs(pathToSave));
+                        ViewBag.UploadStatus = files.Length.ToString() + " files uploaded successfully.";
+                        ViewBag.ImagesPathesToApartment = ViewBag.ImagesPathesToApartment + ";" + pathToSave;
+                    }
+                }
+            }
+            ViewBag.GUID = guid;
+            return await Task.Run(() => View());
         }
 
         protected override void Dispose(bool disposing)

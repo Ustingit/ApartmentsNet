@@ -6,11 +6,10 @@
 
 <h2>Create</h2>
 
-
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Apartment</h4>
         <hr />
@@ -170,7 +169,37 @@
                 <input type="submit" value="Create" class="btn btn-default" />
             </div>
         </div>
+
     </div>
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <div class="form-group">
+            <p>Multi files:</p><br />
+            @using (Html.BeginForm("MultipleFilesUploadWithGUID", "Images", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                <div id="multiple">
+                    <input type="file" class="multiple" name="files" multiple />
+                </div>
+                <div id="single">
+                    <input type="file" class="single" name="files" /><br />
+                    <input type="file" class="single" name="files" /><br />
+                    <input type="file" class="single" name="files" /><br />
+                </div>
+                <button class="UploadButton">Upload</button>
+            }
+        </div>
+    </div>
+}
+
+@using (Html.BeginForm("MultipleFilesUploadWithGUID", "Images", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <input type="file" name="myFiles" multiple />
+    <button class="btn btn-default">Upload</button>
 }
 
 <div>
@@ -179,4 +208,16 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+
+    <script type="text/javascript">
+        $(function () {
+            if(window.FileReader != null){
+                $('#single').hide();
+                $('.single').prop('disabled', true);
+            } else {
+                $('#multiple').hide();
+                $('.multiple').prop('disabled', true);
+            }
+        });
+    </script>
 }
