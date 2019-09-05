@@ -39,7 +39,7 @@ namespace Apartments.Controllers
         {
             string pathes = string.Empty;
             string guid = Guid.NewGuid().ToString();
-            await Utils.IOUtils.CreateDirectoryIfNotExist(Path.Combine(pathToImages, guid));
+            await Utils.IOUtils.CreateDirectoryIfNotExistAsync(Path.Combine(pathToImages, guid));
             if (ModelState.IsValid)
             {   
                 foreach (HttpPostedFileBase file in files)
