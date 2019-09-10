@@ -50,7 +50,7 @@
                         </div>
 
                         <div class="card-body">
-                            <h4 class="card-title">@item.Name @item.Price</h4>
+                            <h4 class="card-title">@(item.Name.Trim().Length > 40 ? item.Name.Trim().Substring(0, 40) : item.Name.Trim()) @item.Price</h4>
                             <p class="card-text">
                                 @{ 
                                     string trimmedDesc = item.Description.Trim();
@@ -64,7 +64,8 @@
                             </p>
                         </div>
                         <div class="card-footer">
-                            <a href="" class="card-link">@Html.ActionLink("Details", "Details", new { id = item.Id })</a>  
+                            <a href="" class="card-link">@Html.ActionLink("Подробная информация", "Details", new { id = item.Id })</a>
+                            <a href="" class="card-link">@Html.ActionLink("В избранное", "Details", new { id = item.Id })</a>
                         </div>
                     </div>
                 </div>

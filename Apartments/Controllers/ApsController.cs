@@ -50,6 +50,21 @@ namespace Apartments.Controllers
             return View(apartment);
         }
 
+        //TODO!!
+        public async Task<ActionResult> Like(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Apartment apartment = await db.Apartments.FindAsync(id);
+            if (apartment == null)
+            {
+                return HttpNotFound();
+            }
+            return View(apartment);
+        }
+
         // GET: Aps/Create
         public ActionResult Create()
         {
@@ -139,6 +154,20 @@ namespace Apartments.Controllers
         public async Task<ActionResult> Test()
         {
             return await Task.Run(() => View("Test"));
+        }
+
+        public async Task<ActionResult> AjaxUpload()
+        {
+            return await Task.Run(() => View());
+        }
+
+        public ActionResult Upload(HttpPostedFileWrapper qqfile)
+        {
+            var extension = Path.GetExtension(qqfile.FileName);
+            
+
+
+            return Json(new { result = "ok", success = true });
         }
 
         private static string pathToImages = @"D:\ApartmentsImages";

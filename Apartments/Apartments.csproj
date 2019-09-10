@@ -184,6 +184,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Global\Config\IconSize.cs" />
     <Compile Include="Helpers\ImageHelpers.cs" />
     <Compile Include="Helpers\PagingHelpers.cs" />
     <Compile Include="Models\Apartment.cs" />
@@ -2608,6 +2609,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="packages.config" />
+    <Content Include="Scripts\default\file-index.js" />
     <Content Include="Scripts\fine-uploader\ajax.requester.js" />
     <Content Include="Scripts\fine-uploader\button.js" />
     <Content Include="Scripts\fine-uploader\deletefile.ajax.requester.js" />
@@ -2682,6 +2684,7 @@
     <Content Include="Views\Aps\Index.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Aps\Test.cshtml" />
+    <Content Include="Views\Aps\AjaxUpload.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Images\kvartirant\old\kv1746020\" />
