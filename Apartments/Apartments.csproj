@@ -187,6 +187,11 @@
     <Compile Include="Global\Config\IconSize.cs" />
     <Compile Include="Helpers\ImageHelpers.cs" />
     <Compile Include="Helpers\PagingHelpers.cs" />
+    <Compile Include="Migrations\201910160942372_change string Price to IntPrice in rubles.cs" />
+    <Compile Include="Migrations\201910160942372_change string Price to IntPrice in rubles.Designer.cs">
+      <DependentUpon>201910160942372_change string Price to IntPrice in rubles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Apartment.cs" />
     <Compile Include="Models\ApartmentsContext.cs" />
     <Compile Include="Models\ApartmentsDbInitializer.cs" />
@@ -203,6 +208,8 @@
     <Compile Include="Models\Postgres\Payment.cs" />
     <Compile Include="Models\TempApartment.cs" />
     <Compile Include="Models\TempClient.cs" />
+    <Compile Include="Observation\IObservable.cs" />
+    <Compile Include="Observation\IObserver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\IOUtils.cs" />
   </ItemGroup>
@@ -2689,6 +2696,11 @@
   <ItemGroup>
     <Folder Include="Images\kvartirant\old\kv1746020\" />
     <Folder Include="Views\Images\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201910160942372_change string Price to IntPrice in rubles.resx">
+      <DependentUpon>201910160942372_change string Price to IntPrice in rubles.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

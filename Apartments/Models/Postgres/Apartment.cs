@@ -13,8 +13,9 @@ namespace Apartments.Models.Postgres
         public string Name { get; set; }
         [Required]
         public string AuthorId { get; set; }  //public Client Author { get; set; }
+        [Range(1, 1000000, ErrorMessage = "Пожалуйста, введите цену в рублях в диапозоне от 1-го до 1 млн. рублей.")]
         [Required]
-        public string Price { get; set; }
+        public int IntPrice { get; set; }
         [Required]
         public string Phone { get; set; }
         [Required]
