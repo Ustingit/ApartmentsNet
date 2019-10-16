@@ -8,17 +8,18 @@ namespace Apartments.Models.Postgres
     {
         [Required]
         public int Id { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Пожалуйста, укажите заглавие вашего объявления")]
         [Display(Name = "Название")]
         public string Name { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Пожалуйста, укажите идентификатор пользователя")]
         public string AuthorId { get; set; }  //public Client Author { get; set; }
         [Range(1, 1000000, ErrorMessage = "Пожалуйста, введите цену в рублях в диапозоне от 1-го до 1 млн. рублей.")]
         [Required]
         public int IntPrice { get; set; }
-        [Required]
+        [MinLength(7), MaxLength(13)]
+        [Required(ErrorMessage = "Пожалуйста, укажите ваш номер телефона в формате +375(код)номер")]
         public string Phone { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Пожалуйста, опишите ваш недвижимый объект. Чем больше подробностей вы предоставите, тем больше шанс, что ваше объявление заинтересует покупателя.")]
         [Display(Name = "Описание")]
         public string Description { get; set; }
         [Display(Name = "Дата создания")]
